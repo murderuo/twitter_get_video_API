@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import requests
 import re
 from fastapi.middleware.cors import CORSMiddleware
-
+from pyexpat.errors import messages
 
 app = FastAPI()
 
@@ -95,3 +95,7 @@ def api_get_video_url(request: VideoRequest):
         return VideoResponse(videoUrl=video_url)
     else:
         raise HTTPException(status_code=404, detail="Video URL not found")
+
+@app.get("/")
+def home():
+    return {messages:'welcome to my ip'}
