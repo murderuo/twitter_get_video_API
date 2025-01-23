@@ -1,5 +1,7 @@
 API endpoint:   https://get-video-api.vercel.app/get_video_url
+
 BODY: {"tweetUrl":"X.COM VIDEO LINK"}
+
 
 RESPONSE: {
     "videoUrl": "YOUR VIDEO LINK WILL COME TO HERE"
