@@ -12,10 +12,10 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Gerekirse spesifik originler
-    # allow_credentials=False,
+    allow_credentials=False,
     # allow_origins=["chrome-extension://njkpjnkolglinkcgdjlhcpggbkedgbhc"],
     # allow_credentials=True,
-    allow_methods=[""],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -94,10 +94,10 @@ def api_get_video_url(request: VideoRequest):
     video_url = getvideo_url(request.tweetUrl)
     if video_url:
         return VideoResponse(videoUrl=video_url)
-    else:
-        raise HTTPException(status_code=404, detail="Video URL not found")
+    # else:
+    #     raise HTTPException(status_code=404, detail="Video URL not found")
 
-@app.get("/")
+@app.get("/",response_description='test')
 def home():
     return {"message": "FastAPI is running on Vercel."}
 
