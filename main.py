@@ -18,6 +18,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); # Or '*' for any origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // Add allowed methods
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // Add allowed headers
+  next();
+});
 
 video_player_prefix = 'https://x.com/i/videos/tweet/'
 
